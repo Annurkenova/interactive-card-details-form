@@ -45,10 +45,63 @@
   }
 </script>
 
+<style>
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .input-container {
+    width: 45%;
+    position: relative;
+  }
+
+  .card-image {
+    width: 45%;
+    position: relative;
+  }
+
+  .confirm-button {
+    margin-top: 20px;
+  }
+
+  .card-details {
+    position: absolute;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .cardholder-name {
+    top: 80px;
+    left: 20px;
+  }
+
+  .card-number {
+    top: 110px;
+    left: 20px;
+  }
+
+  .exp-date {
+    top: 150px;
+    left: 20px;
+  }
+
+  .cvc {
+    top: 190px;
+    left: 190px;
+  }
+</style>
+
 <div class="container">
   <div class="card-image">
     <img src="/Oval_2.svg" class="card-image-1" alt="Front card" />
     <img src="/Group_13.svg" class="card-image-2" alt="Back card" />
+    <div class="card-details cardholder-name">{cardholderName}</div>
+    <div class="card-details card-number">{cardNumber}</div>
+    <div class="card-details exp-date">{expDate}</div>
+    <div class="card-details cvc">{cvc}</div>
   </div>
 
   <div class="input-container">
@@ -82,24 +135,3 @@
     <button on:click={confirmData} class="confirm-button">Confirm</button>
   </div>
 </div>
-
-<style>
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-  }
-
-  .input-container {
-    width: 45%;
-  }
-
-  .card-image {
-    width: 45%;
-  }
-
-  .confirm-button {
-    margin-top: 20px;
-  }
-</style>
