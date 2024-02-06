@@ -45,12 +45,76 @@
   }
 </script>
 
+<body>
+  <div class="container">
+    <div class="card-image-front">
+      <img src="/Oval_2.svg" class="card-image-1" alt="Front card" />
+      <div class="card-details cardholder-name">{cardholderName}</div>
+      <div class="card-details card-number">{cardNumber}</div>
+      <div class="card-details exp-date">{expDate}</div>
+      <div class="card-image-back">
+        <img src="/bg-card-back.png" alt="back-card" />
+        <span class="cvc">{cvc}</span>
+      </div>
+    </div>
+
+    <div class="input-container">
+      <label for="cardholderName">Cardholder Name</label>
+      <input
+        type="text"
+        id="cardholderName"
+        bind:value={cardholderName}
+        on:input={handleCardholderName}
+      />
+
+      <label for="cardNumber">Card Number</label>
+      <input
+        type="text"
+        id="cardNumber"
+        bind:value={cardNumber}
+        on:input={handleCardNumber}
+      />
+
+      <label for="expDate">Exp. Date (MM/YY)</label>
+      <input
+        type="text"
+        id="expDate"
+        bind:value={expDate}
+        on:input={handleExpDate}
+      />
+
+      <label for="cvc">CVC</label>
+      <input type="text" id="cvc" bind:value={cvc} on:input={handleCvc} />
+
+      <button on:click={confirmData} class="confirm-button">Confirm</button>
+    </div>
+  </div>
+</body>
+
 <style>
+  @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap");
+
+  :root {
+    --Red: hsl(0, 100%, 66%);
+    --White: hsl(0, 0%, 100%);
+    --Light-grayish-violet: hsl(270, 3%, 87%);
+    --Dark-grayish-violet: hsl(279, 6%, 55%);
+    --Very-dark-violet: hsl(278, 68%, 11%);
+  }
+  *,
+  * > * {
+    font-family: "Space Grotesk", sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  body {
+    min-height: 100vh;
+  }
+
   .container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 20px;
   }
 
   .input-container {
@@ -58,7 +122,7 @@
     position: relative;
   }
 
-  .card-image {
+  .card-image-front {
     width: 45%;
     position: relative;
   }
@@ -88,50 +152,23 @@
     left: 20px;
   }
 
+  .card-image-back {
+    position: relative;
+    width: 45%;
+  }
+
+  .card-image-back img {
+    height: auto;
+  }
+
   .cvc {
     top: 190px;
     left: 190px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px; /* Размер шрифта можно настроить по вашему вкусу */
+    color: white; /* Цвет шрифта можно настроить по вашему вкусу */
   }
 </style>
-
-<div class="container">
-  <div class="card-image">
-    <img src="/Oval_2.svg" class="card-image-1" alt="Front card" />
-    <img src="/Group_13.svg" class="card-image-2" alt="Back card" />
-    <div class="card-details cardholder-name">{cardholderName}</div>
-    <div class="card-details card-number">{cardNumber}</div>
-    <div class="card-details exp-date">{expDate}</div>
-    <div class="card-details cvc">{cvc}</div>
-  </div>
-
-  <div class="input-container">
-    <label for="cardholderName">Cardholder Name</label>
-    <input
-      type="text"
-      id="cardholderName"
-      bind:value={cardholderName}
-      on:input={handleCardholderName}
-    />
-
-    <label for="cardNumber">Card Number</label>
-    <input
-      type="text"
-      id="cardNumber"
-      bind:value={cardNumber}
-      on:input={handleCardNumber}
-    />
-
-    <label for="expDate">Exp. Date (MM/YY)</label>
-    <input
-      type="text"
-      id="expDate"
-      bind:value={expDate}
-      on:input={handleExpDate}
-    />
-
-    <label for="cvc">CVC</label>
-    <input type="text" id="cvc" bind:value={cvc} on:input={handleCvc} />
-
-    <button on:click={confirmData} class="confirm-button">Confirm</button>
-  </div>
-</div>
